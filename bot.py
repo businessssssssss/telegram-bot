@@ -7,6 +7,7 @@ TOKEN = os.environ.get("TOKEN")
 MANAGER_ID = int(os.environ.get("MANAGER_ID"))
 
 app = Flask(__name__)
+print("ENV TOKEN =", repr(TOKEN))
 application = ApplicationBuilder().token(TOKEN).build()
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
