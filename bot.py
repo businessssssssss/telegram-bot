@@ -26,8 +26,11 @@ def home():
     return "Bot is running"
 
 if __name__ == "__main__":
-    application.run_webhook(
-        listen="0.0.0.0",
-        port=int(os.environ.get("PORT", 5000)),
-        webhook_url=os.environ.get("RENDER_EXTERNAL_URL") + "/" + TOKEN
-    )
+    import os
+
+    TOKEN = os.environ.get("TOKEN")
+    print("ENV TOKEN =", repr(TOKEN))
+
+    application = ApplicationBuilder().token(TOKEN).build()
+
+    application.run_polling()
